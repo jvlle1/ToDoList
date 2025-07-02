@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
     <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
 </head>
 <body>
     <h1>My To Do List</h1>
 
     <input class="inputTask" placeholder="Add a Task"></input>
     <br>
-    <button class="addTask">Add Task</button>
-
+    <button onclick="addTask()" class="addTask">Add Task</button>
+    <ul class="taskList"></ul>
 </body>
 </html>
