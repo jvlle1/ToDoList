@@ -15,8 +15,14 @@ function addTask() {
     // when button is clicked, runs the deleteTask function
     deleteBtn.addEventListener("click", deleteTask ); 
 
+    const markDoneBtn = document.createElement("button");
+    markDoneBtn.textContent = "Task Done"
+    markDoneBtn.className = "taskDone";
+    markDoneBtn.addEventListener("click", doneTask);
+
     // inserts in individual task item
     li.appendChild(deleteBtn);
+    li.appendChild(markDoneBtn);
     // append the new list item to the task list
     list.appendChild(li);
 
@@ -26,6 +32,16 @@ function addTask() {
 function deleteTask(event) {
     // refers to the element (button) that triggered the event.
     const button = event.target; 
+    // removes the parent element of that button which is the task (li)
     const li = button.parentElement;    
     li.remove();
+}
+
+function doneTask(event) {
+    const button = event.target;
+    const li = button.parentElement;
+
+    // adds a css style to the element (li)
+    // shows and hides the style using toggle
+    li.classList.toggle("markedDone");
 }
