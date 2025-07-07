@@ -43,5 +43,9 @@ function doneTask(event) {
 
     // adds a css style to the element (li)
     // shows and hides the style using toggle
-    li.classList.toggle("markedDone");
+    const marked = li.classList.toggle("markedDone");
+
+    // using tenary operator
+    // checks if the element has been marked done
+    button.textContent = marked ? "Undo" : "Task Done"; 
 }
