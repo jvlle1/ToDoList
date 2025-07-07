@@ -35,13 +35,20 @@ function addTask(taskText) {
 
     const markDoneBtn = document.createElement("button");
     markDoneBtn.type = "button";
-    markDoneBtn.textContent = "Task Done"
+    markDoneBtn.textContent = "Task Done";
     markDoneBtn.className = "taskDone";
     markDoneBtn.addEventListener("click", doneTask);
+
+    const editBtn = document.createElement("button");
+    editBtn.type = "button";
+    editBtn.textContent = "Edit Task";
+    editBtn.className = "editBtn";
+    editBtn.addEventListener("click", editTask);
 
     // inserts in individual task item
     li.appendChild(deleteBtn);
     li.appendChild(markDoneBtn);
+    li.appendChild(editBtn);
 
     // append the new list item to the task list
     list.appendChild(li);
@@ -66,4 +73,39 @@ function doneTask(event) {
     // using tenary operator
     // checks if the element has been marked done
     button.textContent = marked ? "Undo" : "Task Done"; 
+}
+
+function editTask(event) {
+    const button = event.target;
+    const li = button.parentElement;
+    const taskSpan = li.querySelector(".taskText");
+
+    // create an input box to replace the task text so the user can edit it
+    const itemInput = document.createElement("input");
+    itemInput.type = "text";
+    itemInput.value = taskSpan.textContent;
+    itemInput.classList.add("edit");
+
+    // replace span with input
+    li.replaceChild(itemInput, taskSpan);
+
+    itemInput.addEventListener("keypress", function (e) {
+        // checks if the eneter key was pressed 
+        if (e.key === "Enter") {
+            saveItem(e, li);
+        }
+    });
+
+}
+
+function saveItem(event, li) {
+    const inputValue = event.target.value.trim();
+    if (inputValue.length > 0) {
+        const taskSpan = document.createElement("span");
+        taskSpan.className = "taskText";
+        taskSpan.textContent = inputValue;
+
+        // replace the task item with the new taskSpan
+        li.replaceChild(taskSpan, event.target);
+    }
 }
