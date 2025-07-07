@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>My To Do List</h1>
-    <form id="userForm">
-        <input class="inputTask" placeholder="Add a Task">
-        <div class="errorMsg"></div>
-        <br>
-        <button type="submit" class="addTask">Add Task</button>
-        <ul class="taskList"></ul>
-    </form>
+    <div class="form-container">
+        <h1>My To Do List</h1>
+        <form id="userForm">
+            <input class="inputTask" placeholder="Add a Task">        
+            <button type="submit" class="addTask">Add Task</button>
+            <div class="errorMsg"></div>
+            <div class="task-card">
+                <ul class="taskList"></ul>
+            </div>
+        </form>
+    </div>
+ 
    
 <script src="/script.js"></script>
 </body>

@@ -1,8 +1,47 @@
-.addTask {
-    margin-top: 10px;
+* {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.markedDone {
+.addTask {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border-style:solid;
+    border-color: black;
+}
+
+.markedDone .taskText {
     text-decoration:line-through;
-    
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inputTask {
+    border-radius: 5px;
+    border-style:solid;
+    border-color: black;
+    padding: 5px;
+}
+
+.task-card {
+    background-color: #D3D3D3;
+    border-radius: 5px;
+    margin-top: 10%;
+    padding: 10px;
+}
+
+.taskList {
+    list-style: none;
+}
+
+li {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }

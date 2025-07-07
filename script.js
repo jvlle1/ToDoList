@@ -20,15 +20,21 @@ function addTask(taskText) {
     const list = document.querySelector(".taskList");
     // empty (li) to represent the new tasks
     const li = document.createElement("li")
-    // the value passed is assigned to (li)
-    li.textContent = taskText;
+
+    const taskSpan = document.createElement("span");
+    taskSpan.className = "taskText";
+    taskSpan.textContent = taskText;
+    li.appendChild(taskSpan);
+
 
     const deleteBtn = document.createElement("button");
+    deleteBtn.type = "button"
     deleteBtn.textContent = "Delete Task";
     deleteBtn.className = "deleteTask";
     deleteBtn.addEventListener("click", deleteTask ); 
 
     const markDoneBtn = document.createElement("button");
+    markDoneBtn.type = "button";
     markDoneBtn.textContent = "Task Done"
     markDoneBtn.className = "taskDone";
     markDoneBtn.addEventListener("click", doneTask);
