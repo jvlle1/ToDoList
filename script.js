@@ -1,10 +1,10 @@
-const form = document.getElementById("userForm");
+const form = document.getElementById("user-form");
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const taskInput = document.querySelector(".inputTask");
-    const message = document.querySelector(".errorMsg");
+    const taskInput = document.querySelector(".input-task");
+    const message = document.querySelector(".error-msg");
 
     // input validation the input
     if (taskInput.value.trim() === '' || taskInput.value == null) {
@@ -73,6 +73,17 @@ function doneTask(event) {
     // using tenary operator
     // checks if the element has been marked done
     button.textContent = marked ? "Undo" : "Task Done"; 
+
+    const inProgress = document.querySelector(".task-progress");
+    const done  = document.querySelector(".task-done");
+
+    // moves the task into the right category
+    if (marked) {
+        done.appendChild(li);
+    }
+    else {
+        inProgress.appendChild(li);
+    }
 }
 
 function editTask(event) {

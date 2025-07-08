@@ -9,19 +9,28 @@
 <body>
     <div class="form-container">
         <h1>My To Do List</h1>
-        <form id="userForm">
-            <div class="addingTask">
-                <input class="inputTask" placeholder="Add a Task">        
-                <button type="submit" class="addTask">Add Task</button>
+        <form id="user-form">
+            <div class="adding-task">
+                <input class="input-task" placeholder="Add a Task">        
+                <button type="submit" class="add-task-btn">Add Task</button>
             </div>
-            <div class="errorMsg"></div>
-            <div class="task-card">
-                <ul class="taskList"></ul>
+
+            <div class="error-msg"></div>
+
+            <div class="task-container">
+                <div class="task-progress">
+                    <p>In Progress Task</p>
+                    <ul class="taskList"></ul>
+                </div>
+                <div class="task-done">
+                    <p>Finished Task</p>
+                </div>
+                
             </div>
         </form>
     </div>
  
-   
+
 <script src="/script.js"></script>
 </body>
 </html>
