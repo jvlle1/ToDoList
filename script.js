@@ -1,3 +1,12 @@
+// gets the date of today
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let month = String(today.toLocaleString('en-US', { month: 'long' }));
+
+today = `${month} ${dd}`;
+const dateShown = document.querySelector(".date-today")
+dateShown.textContent = today;
+
 const form = document.getElementById("user-form");
 
 form.addEventListener('submit', function(event) {
@@ -17,7 +26,7 @@ form.addEventListener('submit', function(event) {
 })
 
 function addTask(taskText) {
-    const list = document.querySelector(".taskList");
+    const list = document.querySelector(".task-list");
     // empty (li) to represent the new tasks
     const li = document.createElement("li")
 

@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div class="form-container">
-        <h1>My To Do List</h1>
+    <div class="page-container">
+        <div class="main">
+            <h1>My To Do List</h1>
+            <div class="date-today"></div>
+        </div>
+       
         <form id="user-form">
             <div class="adding-task">
                 <input class="input-task" placeholder="Add a Task">        
@@ -16,18 +20,17 @@
             </div>
 
             <div class="error-msg"></div>
-
-            <div class="task-container">
-                <div class="task-progress">
-                    <p>In Progress Task</p>
-                    <ul class="taskList"></ul>
-                </div>
-                <div class="task-done">
-                    <p>Finished Task</p>
-                </div>
-                
-            </div>
         </form>
+
+        <div class="task-container">
+            <div class="task-progress">
+                <h4>In Progress Task</h4>
+                <ul class="task-list"></ul>
+            </div>
+            <div class="task-done">
+                <h4>Finished Task</h4>
+            </div> 
+        </div>
     </div>
  
 
