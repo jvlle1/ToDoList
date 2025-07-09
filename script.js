@@ -37,35 +37,43 @@ function addTask(taskText) {
 
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.type = "button"
-    deleteBtn.textContent = "Delete Task";
-    deleteBtn.className = "deleteTask";
-    deleteBtn.addEventListener("click", deleteTask ); 
+    deleteBtn.type = "button";
+    deleteBtn.className = "delete-task";
+    // delete icon added on the button
+    const deleteIcon = document.createElement("ion-icon");
+    deleteIcon.setAttribute("name", "trash-outline");
+    deleteBtn.appendChild(deleteIcon);
+
+    deleteBtn.addEventListener("click", deleteTask); 
 
     const markDoneBtn = document.createElement("button");
     markDoneBtn.type = "button";
     markDoneBtn.textContent = "Task Done";
-    markDoneBtn.className = "taskDone";
+    markDoneBtn.className = "task-done";
     markDoneBtn.addEventListener("click", doneTask);
 
     const editBtn = document.createElement("button");
     editBtn.type = "button";
-    editBtn.textContent = "Edit Task";
-    editBtn.className = "editBtn";
+    // edit icon added on the button 
+    const editIcon = document.createElement("ion-icon");
+    editIcon.setAttribute("name", "create-outline");
+    editBtn.appendChild(editIcon);
+
+    editBtn.className = "edit-btn";
     editBtn.addEventListener("click", editTask);
 
     // inserts in individual task item
     li.appendChild(deleteBtn);
-    li.appendChild(markDoneBtn);
     li.appendChild(editBtn);
-
+    li.appendChild(markDoneBtn);
+    
     // append the new list item to the task list
     list.appendChild(li);
 }
 
 function deleteTask(event) {
     // refers to the element (button) that triggered the event.
-    const button = event.target; 
+    const button = event.currentTarget; 
     // removes the parent element of that button which is the task (li)
     const li = button.parentElement;    
     li.remove();
@@ -96,7 +104,7 @@ function doneTask(event) {
 }
 
 function editTask(event) {
-    const button = event.target;
+    const button = event.currentTarget;
     const li = button.parentElement;
     const taskSpan = li.querySelector(".taskText");
 

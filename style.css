@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 10px;
 }
 
 .main {
@@ -25,25 +26,25 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .input-task {
     font-family: inherit;
     font-size: inherit;
-    background-color: pink;
+    background-color: #d9dcd6;
+    outline: none;
     border-style: none;
-    border-radius: 20px;
+    border-radius: 30px;
     box-sizing: border-box;
     width: 100%;
-    padding: 15px 80px 15px 10px;
+    padding: 15px 80px 15px 17px;
 }
 
 .add-task-btn {
-    background: #16bdae;
+    background: #3a7ca5;
     color: white;
-    outline: none;
-    border-radius: 7px;
+    border-style: none;
+    border-radius: 30px;
     padding: 9px;
     position: absolute;
     right: 10px;
@@ -68,6 +69,7 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 50px;
+    color: white;
 }
 
     .task-container h4 {
@@ -76,14 +78,14 @@
     }
 
 .task-progress {
-    background-color: #D3D3D3;
+    background-color: #2F6690;
     border-radius: 5px;
     margin-top: 10%;
     padding: 10px;
 }
 
 .task-done {
-    background-color: #D3D3D3;
+    background-color: #2F6690;
     border-radius: 5px;
     margin-top: 10%;
     padding: 10px;
@@ -99,4 +101,22 @@ li {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+}
+
+.delete-task {
+    background: transparent;
+    outline: none;
+    border-style: none;
+    cursor: pointer;
+    font-size: medium;
+    color: darkred;
+}
+
+.edit-btn {
+     background: transparent;
+    outline: none;
+    border-style: none;
+    cursor: pointer;
+    font-size: medium;
+    color: darkred;
 }
