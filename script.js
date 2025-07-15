@@ -33,24 +33,25 @@ function addTask(taskText) {
     const taskSpan = document.createElement("span");
     taskSpan.className = "taskText";
     taskSpan.textContent = taskText;
-    li.appendChild(taskSpan);
-
-
+    
     const deleteBtn = document.createElement("button");
     deleteBtn.type = "button";
-    deleteBtn.className = "delete-task";
+    deleteBtn.className = "delete-btn";
+
     // delete icon added on the button
     const deleteIcon = document.createElement("ion-icon");
     deleteIcon.setAttribute("name", "trash-outline");
     deleteBtn.appendChild(deleteIcon);
-
     deleteBtn.addEventListener("click", deleteTask); 
 
-    const markDoneBtn = document.createElement("button");
-    markDoneBtn.type = "button";
-    markDoneBtn.textContent = "Task Done";
-    markDoneBtn.className = "task-done";
+
+    const label = document.createElement("label");
+
+    const markDoneBtn = document.createElement("input");
+    markDoneBtn.type = "checkbox";
+    markDoneBtn.className = "done-btn";
     markDoneBtn.addEventListener("click", doneTask);
+    label.appendChild(markDoneBtn)
 
     const editBtn = document.createElement("button");
     editBtn.type = "button";
@@ -63,10 +64,11 @@ function addTask(taskText) {
     editBtn.addEventListener("click", editTask);
 
     // inserts in individual task item
+    li.appendChild(label);
+    li.appendChild(taskSpan);
     li.appendChild(deleteBtn);
     li.appendChild(editBtn);
-    li.appendChild(markDoneBtn);
-    
+       
     // append the new list item to the task list
     list.appendChild(li);
 }
@@ -80,8 +82,9 @@ function deleteTask(event) {
 }
 
 function doneTask(event) {
-    const button = event.target;
-    const li = button.parentElement;
+    const checkbox = event.currentTarget;
+    // finds the closest (li) in structure
+    const li = checkbox.closest("li");
 
     // adds a css style to the element (li)
     // shows and hides the style using toggle
@@ -89,7 +92,7 @@ function doneTask(event) {
 
     // using tenary operator
     // checks if the element has been marked done
-    button.textContent = marked ? "Undo" : "Task Done"; 
+    checkbox.textContent = marked ? "Undo" : "Task Done"; 
 
     const inProgress = document.querySelector(".task-progress");
     const done  = document.querySelector(".task-done");
@@ -112,7 +115,7 @@ function editTask(event) {
     const itemInput = document.createElement("input");
     itemInput.type = "text";
     itemInput.value = taskSpan.textContent;
-    itemInput.classList.add("edit");
+    itemInput.classList.add("edit-txtbox");
 
     // replace span with input
     li.replaceChild(itemInput, taskSpan);
