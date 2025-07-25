@@ -76,7 +76,7 @@
 }
 
 .chckbox-label {
-    margin-top: 3px;
+    margin: 2px 0 0 0;
 }
 
 .markedDone .taskText {
@@ -162,8 +162,21 @@ li {
 
 
 .done-btn {
-    border-radius: 80px;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 2px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
     cursor: pointer;
+    margin: 0;
+}
+
+.done-btn:checked {
+    background-color: lightgreen;
 }
 
 .edit-txtbox {
