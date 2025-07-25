@@ -41,6 +41,11 @@
     align-items: center;
 }
 
+.error-msg {
+    text-align: center;
+    margin-top: 10px;
+}
+
 .input-task {
     font-family: inherit;
     font-size: inherit;
@@ -66,6 +71,14 @@
     cursor: pointer;
 }
 
+.taskText {
+    margin-top: 3px;
+}
+
+.chckbox-label {
+    margin-top: 3px;
+}
+
 .markedDone .taskText {
     text-decoration:line-through;
 }
@@ -82,11 +95,14 @@
 
 
 .task-container {
+    margin-top: 5%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
+    justify-content: center;
+    gap: 5%;
     color: white;
+    width: 100%;
+
 }
 
     .task-container h4 {
@@ -94,49 +110,56 @@
         margin: 5px 0px 10px;
     }
 
-.task-progress {
+.task-progress, .task-done {
     background-color: #2F6690;
     border-radius: 5px;
-    margin-top: 10%;
     padding: 10px;
-}
-
-.task-done {
-    background-color: #2F6690;
-    border-radius: 5px;
-    margin-top: 10%;
-    padding: 10px;
+    width: 20%;
 }
 
 .task-list {
     list-style: none;
     padding: 0;
 }
-
-li {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
+    
 
 .delete-btn {
-    background: transparent;
+    background: #81C3D7;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
     outline: none;
     border-style: none;
     cursor: pointer;
-    font-size: medium;
-    color: darkred;
+    font-size: medium;  
+    padding: 4px 0;
 }
 
 .edit-btn {
-    background: transparent;
+    background: #81C3D7;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
     outline: none;
     border-style: none;
     cursor: pointer;
-    font-size: medium;
-    color: darkred;
+    font-size: medium;  
+    padding: 2px 0 0 2px;
 }
+
+li {
+    margin-top: 10px;
+    padding: 0 25px 0 25px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.button-grp, .task-grp {
+    display: flex;
+    gap: 10px;
+}
+
 
 .done-btn {
     border-radius: 80px;

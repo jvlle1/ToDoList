@@ -34,18 +34,24 @@ function addTask(taskText) {
     taskSpan.className = "taskText";
     taskSpan.textContent = taskText;
     
+    const buttonGroup = document.createElement("div");
+    buttonGroup.className = "button-grp";
+    const taskGroup = document.createElement("div");
+    taskGroup.className = "task-grp";
+
     const deleteBtn = document.createElement("button");
     deleteBtn.type = "button";
     deleteBtn.className = "delete-btn";
 
     // delete icon added on the button
     const deleteIcon = document.createElement("ion-icon");
-    deleteIcon.setAttribute("name", "trash-outline");
+    deleteIcon.setAttribute("name", "trash-outline");   
     deleteBtn.appendChild(deleteIcon);
     deleteBtn.addEventListener("click", deleteTask); 
 
 
     const label = document.createElement("label");
+    label.className = "chckbox-label";
 
     const markDoneBtn = document.createElement("input");
     markDoneBtn.type = "checkbox";
@@ -63,11 +69,15 @@ function addTask(taskText) {
     editBtn.className = "edit-btn";
     editBtn.addEventListener("click", editTask);
 
+    buttonGroup.appendChild(deleteBtn);
+    buttonGroup.appendChild(editBtn);
+
+    taskGroup.appendChild(label);
+    taskGroup.appendChild(taskSpan);
+    
     // inserts in individual task item
-    li.appendChild(label);
-    li.appendChild(taskSpan);
-    li.appendChild(deleteBtn);
-    li.appendChild(editBtn);
+    li.appendChild(taskGroup);
+    li.appendChild(buttonGroup);
        
     // append the new list item to the task list
     list.appendChild(li);
@@ -77,7 +87,7 @@ function deleteTask(event) {
     // refers to the element (button) that triggered the event.
     const button = event.currentTarget; 
     // removes the parent element of that button which is the task (li)
-    const li = button.parentElement;    
+    const li = button.closest("li");    
     li.remove();
 }
 
@@ -89,10 +99,6 @@ function doneTask(event) {
     // adds a css style to the element (li)
     // shows and hides the style using toggle
     const marked = li.classList.toggle("markedDone");
-
-    // using tenary operator
-    // checks if the element has been marked done
-    checkbox.textContent = marked ? "Undo" : "Task Done"; 
 
     const inProgress = document.querySelector(".task-progress");
     const done  = document.querySelector(".task-done");
@@ -108,7 +114,7 @@ function doneTask(event) {
 
 function editTask(event) {
     const button = event.currentTarget;
-    const li = button.parentElement;
+    const li = button.closest("li");
     const taskSpan = li.querySelector(".taskText");
 
     // create an input box to replace the task text so the user can edit it
@@ -118,7 +124,7 @@ function editTask(event) {
     itemInput.classList.add("edit-txtbox");
 
     // replace span with input
-    li.replaceChild(itemInput, taskSpan);
+    taskSpan.parentElement.replaceChild(itemInput, taskSpan);
 
     itemInput.addEventListener("keypress", function (e) {
         // checks if the eneter key was pressed 
@@ -126,17 +132,18 @@ function editTask(event) {
             saveItem(e, li);
         }
     });
-
 }
 
 function saveItem(event, li) {
-    const inputValue = event.target.value.trim();
+    // get the input directly from the li
+    const input = li.querySelector(".edit-txtbox"); 
+    const inputValue = input.value.trim();
+
     if (inputValue.length > 0) {
         const taskSpan = document.createElement("span");
         taskSpan.className = "taskText";
         taskSpan.textContent = inputValue;
 
-        // replace the task item with the new taskSpan
-        li.replaceChild(taskSpan, event.target);
+        li.querySelector(".task-grp").replaceChild(taskSpan, input);
     }
 }
