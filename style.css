@@ -116,7 +116,7 @@
         margin: 5px 0px 10px;
     }
 
-.task-progress, .task-done {
+.tasks-card {
     background-color: #2F6690;
     border-radius: 5px;
     padding: 10px;
@@ -225,11 +225,12 @@ li {
 }
 
 .delete-all-btn {
+    display: block;
+    margin: 0 auto;
     background: #81C3D7;
     color: black;
     border-style: none;
     border-radius: 30px;
-    margin-top: 10px;
     padding: 8px;
     cursor: pointer;
 
@@ -239,4 +240,9 @@ li {
 
 .delete-all-btn:hover {
     transform: scale(1.02);
+}
+
+select#task-filter {
+    display: block;
+    margin: 0 auto;
 }

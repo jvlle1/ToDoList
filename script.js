@@ -78,6 +78,7 @@ function addTask(taskText) {
     // inserts in individual task item
     li.appendChild(taskGroup);
     li.appendChild(buttonGroup);
+    li.setAttribute("data-status", "uncompleted")
        
     // append the new list item to the task list
     list.appendChild(li);
@@ -100,18 +101,16 @@ function doneTask(event) {
     // shows and hides the style using toggle
     const marked = li.classList.toggle("markedDone");
 
-    const inProgress = document.querySelector(".task-progress");
-    const done  = document.querySelector(".task-done");
-
     // moves the task into the right category
     if (marked) {
-        done.appendChild(li);
+        li.setAttribute("data-status", "completed");
+        deleteAllButton(); 
     }
     else {
-        inProgress.appendChild(li);
+        li.setAttribute("data-status", "uncompleted")
     }
 
-    deleteAllButton(); 
+    
 }
 
 function editTask(event) {
@@ -151,13 +150,13 @@ function saveItem(event, li) {
 }
 
 function deleteAllButton() {
-    const taskDoneGrp = document.querySelector(".task-done");
+    const taskGrp = document.querySelector(".tasks-card");
 
     // checks if there is an existing buttong and removes it
-    const existingBtn = taskDoneGrp.querySelector(".delete-all-btn");
+    const existingBtn = taskGrp.querySelector(".delete-all-btn");
     if (existingBtn) existingBtn.remove();
 
-    const tasks = taskDoneGrp.querySelectorAll("li");
+    const tasks = taskGrp.querySelectorAll("li");
 
     // checks if the tasks on the done section has more than 1 tasks in 
     if (tasks.length > 1) {
@@ -171,7 +170,34 @@ function deleteAllButton() {
             deleteAllBtn.remove();
         });
 
-        taskDoneGrp.appendChild(deleteAllBtn);
+        taskGrp.appendChild(deleteAllBtn);
     }
 }
 
+// checks what filtering option user choose on dropdown
+const filterTask = document.getElementById("task-filter")
+filterTask.addEventListener("change", (e) => {
+    const selected = e.target.value;
+    filteringTask(selected)
+});
+
+// function to filter through the three options
+function filteringTask(filterOption) {
+    const tasks = document.querySelectorAll(".task-list li");
+
+    // loops through each tasks
+    tasks.forEach(task => {
+        // gets the data status attribute of the tasks
+        taskStatus = task.getAttribute("data-status")
+
+        if (filterOption === "All") {
+            task.style.display = "";
+        } else if (filterOption === "Completed" && taskStatus !== "completed") {
+            task.style.display = "none";
+        } else if (filterOption === "Uncompleted" && taskStatus !== "uncompleted") {
+            task.style.display = "none";
+        } else {
+            task.style.display = "";
+        }
+    });
+}
