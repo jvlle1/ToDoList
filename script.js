@@ -110,6 +110,8 @@ function doneTask(event) {
     else {
         inProgress.appendChild(li);
     }
+
+    deleteAllButton(); 
 }
 
 function editTask(event) {
@@ -147,3 +149,29 @@ function saveItem(event, li) {
         li.querySelector(".task-grp").replaceChild(taskSpan, input);
     }
 }
+
+function deleteAllButton() {
+    const taskDoneGrp = document.querySelector(".task-done");
+
+    // checks if there is an existing buttong and removes it
+    const existingBtn = taskDoneGrp.querySelector(".delete-all-btn");
+    if (existingBtn) existingBtn.remove();
+
+    const tasks = taskDoneGrp.querySelectorAll("li");
+
+    // checks if the tasks on the done section has more than 1 tasks in 
+    if (tasks.length > 1) {
+        const deleteAllBtn = document.createElement("button");
+        deleteAllBtn.className = "delete-all-btn";
+        deleteAllBtn.textContent = "Delete All";
+
+        deleteAllBtn.addEventListener("click", () => {
+            // goes through each task on the list and removes it
+            tasks.forEach(task => task.remove());
+            deleteAllBtn.remove();
+        });
+
+        taskDoneGrp.appendChild(deleteAllBtn);
+    }
+}
+
